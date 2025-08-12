@@ -1,4 +1,6 @@
 import { Box, Button, Container, styled, TextField } from "@mui/material";
+import { useAppSelector, useAppDispatch } from "../hooks";
+import { incrementCount } from "./asyncActions";
 
 function Register() {
   const CustomTextField = styled(TextField)({
@@ -35,6 +37,20 @@ function Register() {
       },
     },
   });
+
+  const count = useAppSelector(
+    (state: { registerReducer: { value: number } }) =>
+      state.registerReducer.value
+  );
+  const dispatch = useAppDispatch();
+
+  function Counter() {
+    console.log("clicked");
+
+    dispatch(incrementCount());
+
+    console.log(count);
+  }
   return (
     <Container
       sx={{
@@ -68,6 +84,9 @@ function Register() {
             color: "#FF7129",
             borderRadius: 4,
             borderWidth: 2,
+          }}
+          onClick={() => {
+            Counter();
           }}
         >
           Submit
