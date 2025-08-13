@@ -4,36 +4,35 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../store";
 
 // Define a type for the slice state
-interface CounterState {
-  value: number;
+interface informationState {
+  name: string;
+  email: string
 }
 
 // Define the initial state using that type
-const initialState: CounterState = {
-  value: 0,
+const initialState: informationState = {
+  name: "",
+  email: ""
 };
 
-export const counterSlice = createSlice({
+export const informationSlice = createSlice({
   name: "counter",
   // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
-    increment: (state) => {
-      state.value += 1;
+    name: (state, action: PayloadAction<string>) => {
+      state.name = action.payload;
     },
-    decrement: (state) => {
-      state.value -= 1;
-    },
-    // Use the PayloadAction type to declare the contents of `action.payload`
-    incrementByAmount: (state, action: PayloadAction<number>) => {
-      state.value += action.payload;
+    email: (state, action: PayloadAction<string>) => {
+      state.email = action.payload;
     },
   },
 });
 
-export const { increment, decrement, incrementByAmount } = counterSlice.actions;
+export const { name, email } = informationSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
-export const selectCount = (state: RootState) => state.registerReducer.value;
+export const selectName = (state: RootState) => state.registerReducer.name;
+export const selectEmail = (state: RootState) => state.registerReducer.email;
 
-export default counterSlice.reducer;
+export default informationSlice.reducer;

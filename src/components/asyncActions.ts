@@ -1,9 +1,15 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { increment } from "./register.slice";  
+import { informationSlice } from "./register.slice";  
 
-export const incrementCount = createAsyncThunk(
-  "register/incrementCount",
-  async (_, thunkAPI) => {
-    thunkAPI.dispatch(increment());
+export const nameChange = createAsyncThunk(
+  "register/nameChange",
+  async (name: string, thunkAPI) => {
+    thunkAPI.dispatch(informationSlice.actions.name(name));
+  }
+);
+export const emailChange = createAsyncThunk(
+  "register/emailChange",
+  async (email: string, thunkAPI) => {
+    thunkAPI.dispatch(informationSlice.actions.email(email));
   }
 );
