@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
-import registerReducer from './components/register.slice';
+import registerReducer from './components/register/register.slice';
+import albumsReducer from './components/landingPage/landingPage.slice';
  
 export const store = configureStore({
   reducer: {
-    registerReducer: registerReducer,
+    register: registerReducer,
+    album: albumsReducer
   },
 })
 

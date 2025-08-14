@@ -6,7 +6,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { useAppDispatch } from "../hooks";
+import { useAppDispatch } from "../../hooks";
 import { nameChange, emailChange } from "./asyncActions";
 import React from "react";
 
