@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../../store";
 import { ArtistData } from "./interface";
 import { fetchArtistDetails } from "./actions";
@@ -7,19 +7,25 @@ import { fetchArtistDetails } from "./actions";
 export interface ArtistState extends ArtistData {
   loading: boolean;
   error: string | null;
+  chosenArtist: string;
 }
  
 const initialState: ArtistState = {
-  artist: '',
+  artists: [],
   albums: [],
   loading: false,
   error: null,
+  chosenArtist:''
 };
 
 export const albumSlice = createSlice({
   name: "album",
   initialState,
-  reducers: {},
+  reducers: {
+      setArtist: (state, action: PayloadAction<string>) => {
+      state.chosenArtist = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchArtistDetails.pending, (state) => {
@@ -28,7 +34,7 @@ export const albumSlice = createSlice({
       })
       .addCase(fetchArtistDetails.fulfilled, (state, action) => {
         state.loading = false;
-        state.artist = action.payload.artist;
+        state.artists = action.payload.artists;
         state.albums = action.payload.albums;
       })
       .addCase(fetchArtistDetails.rejected, (state, action) => {
@@ -39,7 +45,9 @@ export const albumSlice = createSlice({
 });
 
  
-export const selectArtist = (state: RootState) => state.album.artist
+export const selectArtist = (state: RootState) => state.album.artists
 export const selectAlbums = (state: RootState) => state.album.albums;
+export const { setArtist } = albumSlice.actions;
+
 
 export default albumSlice.reducer;

@@ -8,6 +8,6 @@ export interface Album {
 }
 
 export interface ArtistData {
-  artist: string;
+  artists: string[];
   albums: Album[];
 }

@@ -1,8 +1,12 @@
-import { Container, List, ListItemButton, Typography } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { fetchArtistDetails } from "./actions";
-import { selectAlbums, selectArtist } from "./selectors";
+import { chosenArtist } from "./selectors";
+import QuizOptions from "./QuizOptions";
+import Quiz from "../quiz/Quiz";
+import { selectEmail, selectName } from "../register/selector";
+import Register from "../register/Register";
 
 function LandingPage() {
   const dispatch = useAppDispatch();
@@ -11,38 +15,50 @@ function LandingPage() {
     dispatch(fetchArtistDetails());
   }, [dispatch]);
 
-  const albumSelector = useAppSelector(selectAlbums);
-  const artistSelector = useAppSelector(selectArtist);
+  const chosenArtistSelector = useAppSelector(chosenArtist);
+  const userName = useAppSelector(selectName);
+  const userEmail = useAppSelector(selectEmail);
 
-  console.log(albumSelector);
-  console.log(artistSelector);
+  const isMissingUserInfo = !userName || userEmail === "";
+  const isBeatlesQuiz = chosenArtistSelector === "The Beatles";
+
+  const renderContent = () => {
+    if (isMissingUserInfo) {
+      return <Register />;
+    }
+    if (isBeatlesQuiz) {
+      return <Quiz />;
+    }
+
+    return <QuizOptions />;
+  };
 
   return (
-    <Container
+    <Box
       sx={{
-        bgcolor: "#222A43",
-        height: "50vh",
-        border: "2px solid #FFFFFF",
+        minHeight: "100vh",
+        width: "100vw",
         display: "flex",
-        p: 2,
-        boxShadow: 11,
+        justifyContent: "center",
+        alignItems: "center",
+        bgcolor: "#222A43",
       }}
     >
-      <List component="div" disablePadding>
-        <ListItemButton
-          sx={{
-            height: "250px",
-            width: "250px",
-            display: "flex",
-            justifyContent: "flex-end",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <Typography sx={{ color: "white" }}>The Beatles</Typography>
-        </ListItemButton>
-      </List>
-    </Container>
+      <Container
+        sx={{
+          bgcolor: "#222A43",
+          height: "80vh",
+          border: "2px solid #FFFFFF",
+          display: "flex",
+          justifyContent: "flex",
+          flexDirection: "column",
+          p: 2,
+          boxShadow: 11,
+        }}
+      >
+        {renderContent()}
+      </Container>
+    </Box>
   );
 }
 
