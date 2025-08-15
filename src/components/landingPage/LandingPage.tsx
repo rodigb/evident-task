@@ -23,9 +23,9 @@ function LandingPage() {
   const isBeatlesQuiz = chosenArtistSelector === "The Beatles";
 
   const renderContent = () => {
-    if (isMissingUserInfo) {
-      return <Register />;
-    }
+    // if (isMissingUserInfo) {
+    //   return <Register />;
+    // }
     if (isBeatlesQuiz) {
       return <Quiz />;
     }

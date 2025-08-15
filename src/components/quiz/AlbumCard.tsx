@@ -1,6 +1,13 @@
 import { Box, Button } from "@mui/material";
 
-function AlbumCard({ cover }: { cover: string }) {
+function AlbumCard({
+  albumCoverPath,
+  albumCoverName,
+}: {
+  albumCoverPath: string;
+  albumCoverName: string;
+}) {
+  console.log(albumCoverPath);
   return (
     <Box
       sx={{
@@ -21,21 +28,9 @@ function AlbumCard({ cover }: { cover: string }) {
           overflow: "hidden",
         }}
         component="img"
-        src={cover}
+        src={`https://frontend-interview.evidentinsights.com/${albumCoverPath}`}
         alt="Album Cover"
       />
-
-      <Button
-        variant="outlined"
-        sx={{
-          borderColor: "#FF7129",
-          color: "#FF7129",
-          borderRadius: 4,
-          borderWidth: 2,
-        }}
-      >
-        Submit
-      </Button>
     </Box>
   );
 }
