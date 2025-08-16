@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import registerReducer from './components/register/register.slice';
 import albumsReducer from './components/landingPage/landingPage.slice';
+import quizReducer from './components/quiz/quiz.slice';
  
 export const store = configureStore({
   reducer: {
     register: registerReducer,
-    album: albumsReducer
+    album: albumsReducer,
+    quiz: quizReducer,
   },
 })
 
