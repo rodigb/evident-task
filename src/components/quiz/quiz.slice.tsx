@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   correctCount: 0,
   incorrectCount: 0,
-  roundCount: 0,
+  roundCount: 1,
   quizEnded: false,
 };
 
