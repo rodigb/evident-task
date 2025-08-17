@@ -66,12 +66,14 @@ function Quiz() {
     <>
       <Container
         sx={{
-          bgcolor: "#222A43",
           p: { xs: 3, sm: 2 },
           display: "flex",
           justifyContent: "center",
+          flexDirection: "column",
+          gap: 2,
           alignItems: "center",
           maxWidth: { xs: "95%", sm: "500px" },
+          height: "100%",
         }}
       >
         <Box
@@ -120,11 +122,9 @@ function Quiz() {
                     ? "#4CAF50"
                     : wrongGuesses.has(option)
                     ? "#F44336"
-                    : "transparent",
+                    : "#222A43",
                 borderColor: "#FF7129",
                 color: "white",
-                borderRadius: 4,
-                borderWidth: 2,
               }}
               onClick={() => handleClick(option)}
             >
@@ -133,11 +133,13 @@ function Quiz() {
           ))}
         </Box>
       </Container>
-      <TriviaInfo
-        correctAlbum={correctAlbumInfo}
-        isCorrect={correctChosen}
-        isWrong={wrongGuesses.size > 0}
-      />
+      <Box sx={{ height: "250px", overflowY: "auto", mt: 2 }}>
+        <TriviaInfo
+          correctAlbum={correctAlbumInfo}
+          isCorrect={correctChosen}
+          isWrong={wrongGuesses.size > 0}
+        />
+      </Box>
     </>
   );
 }

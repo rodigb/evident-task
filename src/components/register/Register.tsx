@@ -1,60 +1,45 @@
-import {
-  Box,
-  Button,
-  Container,
-  styled,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Container, TextField, Typography } from "@mui/material";
 import { useAppDispatch } from "../../hooks";
 import { nameChange, emailChange } from "./asyncActions";
-import React from "react";
-
-const CustomTextField = styled(TextField)({
-  "& label": {
-    color: "#A6A6A6",
-  },
-  "& input": {
-    color: "white",
-    padding: "12px 12px",
-  },
-  "& label.Mui-focused": {
-    color: "#ffffffff",
-  },
-  "& .placeholder": {
-    color: "#ffffff",
-  },
-  "& .MuiInput-border": {
-    borderBottomColor: "#B2BAC2",
-  },
-  "& .MuiInput-underline:after": {
-    borderBottomColor: "white",
-  },
-  "& .MuiOutlinedInput-root": {
-    borderRadius: 0,
-    "& fieldset": {
-      border: "none",
-    },
-    borderBottom: "2px solid white",
-    "&:hover": {
-      borderBottom: "2px solid white",
-    },
-    "&.Mui-focused": {
-      borderBottom: "2px solid white",
-    },
-  },
-});
+import { ChangeEvent, useState } from "react";
 
 function Register() {
-  const [name, setName] = React.useState("");
-  const [email, setEmail] = React.useState("");
-
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [nameError, setNameError] = useState("");
+  const [emailError, setEmailError] = useState("");
   const dispatch = useAppDispatch();
 
   function Register() {
     dispatch(nameChange(name));
     dispatch(emailChange(email));
   }
+  const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setEmail(value);
+    setEmailError(validateEmail(value));
+  };
+
+  const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setName(value);
+    setNameError(validateName(value));
+  };
+
+  const validateEmail = (value: string): string => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!value) return "Email is required";
+    if (!regex.test(value)) return "Enter a valid email address";
+    return "";
+  };
+
+  const validateName = (value: string): string => {
+    if (!value) return "Name is required";
+    return "";
+  };
+  const isDisabled =
+    !email || !name || Boolean(emailError) || Boolean(nameError);
+
   return (
     <Container
       sx={{
@@ -80,33 +65,34 @@ function Register() {
       >
         <Typography
           sx={{
-            color: "white",
+            color: "#FF7129",
+            mb: 2,
             fontSize: "1.5rem",
+            fontWeight: "bold",
             display: { xs: "none", sm: "none", md: "block" },
           }}
         >
           Evident Guess The Album Cover
         </Typography>
-        <CustomTextField
+        <TextField
           label="Email"
           sx={{ width: "70%" }}
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={handleEmailChange}
+          error={Boolean(emailError)}
+          helperText={emailError}
         />
-        <CustomTextField
+        <TextField
           label="Name"
           sx={{ width: "70%" }}
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={handleNameChange}
+          helperText={nameError}
+          error={Boolean(nameError)}
         />
         <Button
           variant="outlined"
-          sx={{
-            borderColor: "#FF7129",
-            color: "#FF7129",
-            borderRadius: 4,
-            borderWidth: 2,
-          }}
+          disabled={isDisabled}
           onClick={() => {
             Register();
           }}

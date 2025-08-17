@@ -23,9 +23,9 @@ function LandingPage() {
   const isBeatlesQuiz = chosenArtistSelector === "The Beatles";
 
   const renderContent = () => {
-    // if (isMissingUserInfo) {
-    //   return <Register />;
-    // }
+    if (isMissingUserInfo) {
+      return <Register />;
+    }
     if (isBeatlesQuiz) {
       return <Quiz />;
     }
@@ -46,14 +46,10 @@ function LandingPage() {
     >
       <Container
         sx={{
-          bgcolor: "#222A43",
-          height: "80vh",
-          border: "2px solid #FFFFFF",
           display: "flex",
           justifyContent: "flex",
           flexDirection: "column",
           p: 2,
-          boxShadow: 11,
         }}
       >
         {renderContent()}

@@ -6,7 +6,16 @@ function QuizOptions() {
   const dispatch = useAppDispatch();
 
   return (
-    <List component="div" disablePadding>
+    <List
+      component="div"
+      disablePadding
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: { xs: "center", sm: "flex-start" },
+        alignItems: "center",
+      }}
+    >
       <ListItemButton
         sx={{
           height: "250px",
