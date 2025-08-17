@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import albumService from "./services";
 import ServiceError from "../../ServiceError";
 
-export const fetchArtistDetails = createAsyncThunk(
+export const fetchAlbumDetails = createAsyncThunk(
   "album/fetchAlbumDetails",
   async (_, thunkAPI) => {
     try {

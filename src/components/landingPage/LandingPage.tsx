@@ -1,7 +1,7 @@
 import { Box, Container } from "@mui/material";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks";
-import { fetchArtistDetails } from "./actions";
+import { fetchAlbumDetails } from "./actions";
 import { chosenArtist } from "./selectors";
 import QuizOptions from "./QuizOptions";
 import Quiz from "../quiz/Quiz";
@@ -12,7 +12,7 @@ function LandingPage() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(fetchArtistDetails());
+    dispatch(fetchAlbumDetails());
   }, [dispatch]);
 
   const chosenArtistSelector = useAppSelector(chosenArtist);

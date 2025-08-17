@@ -25,8 +25,6 @@ function Quiz() {
   const albumSelector = useAppSelector(selectAlbums);
   const quizEnded = useAppSelector(selectQuizEnded);
 
-  console.log(quizEnded);
-
   const [correctAlbumInfo, setCorrectAlbumInfo] = useState<Album | null>(null);
 
   useEffect(() => {

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../../store";
 import { ArtistData } from "./interface";
-import { fetchArtistDetails } from "./actions";
+import { fetchAlbumDetails } from "./actions";
 
 
 export interface ArtistState extends ArtistData {
@@ -28,25 +28,22 @@ export const albumSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchArtistDetails.pending, (state) => {
+      .addCase(fetchAlbumDetails.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchArtistDetails.fulfilled, (state, action) => {
+      .addCase(fetchAlbumDetails.fulfilled, (state, action) => {
         state.loading = false;
         state.artists = action.payload.artists;
         state.albums = action.payload.albums;
       })
-      .addCase(fetchArtistDetails.rejected, (state, action) => {
+      .addCase(fetchAlbumDetails.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message || "Failed to fetch albums";
       });
   },
 });
 
- 
-export const selectArtist = (state: RootState) => state.album.artists
-export const selectAlbums = (state: RootState) => state.album.albums;
 export const { setArtist } = albumSlice.actions;
 
 
