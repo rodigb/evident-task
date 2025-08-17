@@ -1,46 +1,64 @@
-# Getting Started with Create React App
+# Evident Task – Guess the Album Cover
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a React application built as part of the Evident Task.  
+It is a quiz game where users try to guess album covers, track their score, and view results in a summary screen.
 
-## Available Scripts
+You can view the initial Figma mockups and designs here:  
+[Figma Design File](https://www.figma.com/design/cxT3eXc0qTE1CKq53atPpO/Evident-Task?node-id=0-1&t=6tfgx69ZUhcvv4zA-1)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Prerequisites
+Make sure you have the following installed on your machine:
+- [Node.js](https://nodejs.org/) (v16 or higher recommended)
+- npm (comes with Node) or [Yarn](https://yarnpkg.com/)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+---
 
-### `npm test`
+1. **Clone the repository**
+   To clone the repository, you can copy and paste the repo url from github to your IDE.
+   In this case I used Visual Studio Code
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   Or you can head to your IDE's terminal and type the following:
+   
+   ```
+   git clone <repo-url>
+   cd evident-task
 
-### `npm run build`
+2. **Install the dependencies**
+   ```
+   npm install
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. **Run the application**
+   ```
+   npm start
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Open your browser and head to http://localhost:3000
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## File Structure
 
-### `npm run eject`
+```
+/evident-task
+├── src/
+│   ├── components/   # Reusable UI components
+│   ├── features/     # Feature modules (Quiz, Register, etc.)
+│   ├── hooks/        # Custom React hooks
+│   ├── theme/        # MUI theme overrides & styling
+│   └── App.tsx       # Root component
+├── public/           # Static assets
+├── package.json      # Dependencies & scripts
+└── README.md         # Project documentation
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+ ## Tools
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+React (with TypeScript)
+Material UI (MUI) for UI components and styling
+Redux Toolkit for state management
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Testing
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Due to the small timeframe, testing was not done. However, JEST would have been used to test the endpoints, and components.
