@@ -12,21 +12,22 @@ You can view the initial Figma mockups and designs here:
 
 ### Prerequisites
 Make sure you have the following installed on your machine:
-- [Node.js](https://nodejs.org/) (v16 or higher recommended)
-- npm (comes with Node) or [Yarn](https://yarnpkg.com/)
+- [Node.js](https://nodejs.org/) (v16 or higher recommended).
+- npm (comes with Node) or [Yarn](https://yarnpkg.com/).
 
 ---
 
 1. **Clone the repository**
-   To clone the repository, you can copy and paste the repo url from github to your IDE.
-   In this case I used Visual Studio Code
 
-   Or you can head to your IDE's terminal and type the following:
+   To clone the repository, you can copy and paste the repo url from github to your code editor.
+   In this case I used Visual Studio Code.
+   
+   Or you can head to your code editors terminal and type the following:
    
    ```
    git clone <repo-url>
    cd evident-task
-2. **Install the dependencies**
+3. **Install the dependencies**
    ```
    npm install
 4. **Run the application**
@@ -52,9 +53,9 @@ Open your browser and head to http://localhost:3000
 
  ## Tools
 
-React (with TypeScript)
-Material UI (MUI) for UI components and styling
-Redux Toolkit for state management
+React (with TypeScript).
+Material UI (MUI) for UI components and styling.
+Redux Toolkit for state management.
 
 ## Testing
 
