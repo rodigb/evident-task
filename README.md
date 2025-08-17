@@ -26,15 +26,12 @@ Make sure you have the following installed on your machine:
    ```
    git clone <repo-url>
    cd evident-task
-
 2. **Install the dependencies**
    ```
    npm install
-
 4. **Run the application**
    ```
    npm start
-
 Open your browser and head to http://localhost:3000
 
 ## File Structure
