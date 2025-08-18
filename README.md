@@ -61,4 +61,4 @@ Redux Toolkit for state management.
 
 ## Testing
 
-Due to the small timeframe, testing was not done. However, JEST would have been used to test the endpoints, and components.
+Due to the small timeframe, testing was not fully covered. However, JEST would have been used to test the endpoints, and components. A small example of this can be seen in the QuizSummary.test.tsx file
