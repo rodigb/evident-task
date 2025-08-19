@@ -13,7 +13,7 @@ function QuizOptions() {
         sx={{ color: "#ffffff", fontWeight: "bold" }}
         gutterBottom
       >
-        Choose an artist
+        Choose a Quiz
       </Typography>
       <List
         component="div"
@@ -52,7 +52,7 @@ function QuizOptions() {
             }}
           >
             <Typography sx={{ color: "white", fontWeight: "bold" }}>
-              The Beatles
+              The Beatles - Guess the Album cover
             </Typography>
           </Box>
         </ListItemButton>
